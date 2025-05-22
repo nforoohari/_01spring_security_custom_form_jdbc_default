@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,16 +22,15 @@ public class SecurityConfig {
         return new JdbcUserDetailsManager(dataSource);
     }
 
-  /*  @Bean
-    public PasswordEncoder passwordEncoder()
-    {
-        return  NoOpPasswordEncoder.getInstance();
-    }*/
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return  NoOpPasswordEncoder.getInstance();
+//    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -41,8 +41,8 @@ public class SecurityConfig {
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> {
                     httpSecurityFormLoginConfigurer
-                            .loginPage("/showMyLoginform")
-                            .loginProcessingUrl("/login2")
+                            .loginPage("/showMyLoginForm")
+                            .loginProcessingUrl("/loginProcess")
                             .permitAll();
                 })
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.permitAll())

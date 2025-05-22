@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class LoginController {
 
-    @GetMapping("/showMyLoginform")
-    public String showMyLoginform() {
+    @GetMapping("/showMyLoginForm")
+    public String showMyLoginForm() {
         return "login";
     }
 }

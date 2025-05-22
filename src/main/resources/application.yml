@@ -10,4 +10,4 @@ spring:
 logging:
   level:
     org.springframework.jdbc.core: trace
-#    org.springframework.security: trace
+    org.springframework.security: trace
